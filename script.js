@@ -4,16 +4,21 @@ var questionContainerEl = document.querySelector('.q-container');
 var titleContainerEl = document.querySelector('.container');
 var questionEl = document.querySelector('.question');
 var answerEl = document.querySelector('.btns');
+var resultEl = document.querySelector('#result');
+var theEndEl = document.querySelector('.the-end');
+var finalScoreEl = document.querySelector('#final-score');
 
 var switchQuestions, currentQuestionIndex;
 
 var timer;
 var timerCount;
 
+//Event listener to start game
 startButtonEl.addEventListener('click', startGame);
 
+//Starts Game
 function startGame() {
-	timerCount = 20;
+	timerCount = 90;
 	startButtonEl.classList.add('hide');
 	titleContainerEl.classList.add('hide');
 	questionContainerEl.classList.remove('hide');
@@ -22,7 +27,7 @@ function startGame() {
 	nextQuestion();
 	startTimer();
 }
-
+// Starts timer
 function startTimer() {
 	timer = setInterval(function () {
 		timerCount--;
@@ -32,12 +37,12 @@ function startTimer() {
 		}
 	}, 1000);
 }
-
+//Renders the next question
 function nextQuestion() {
 	resetAnswers();
 	revealQuestion(switchQuestions[currentQuestionIndex]);
 }
-
+//Renders question onto the screen
 function revealQuestion(question) {
 	questionEl.innerText = question.question;
 	question.answers.forEach((answer) => {
@@ -47,7 +52,7 @@ function revealQuestion(question) {
 		if (answer.correct) {
 			button.dataset.correct = answer.correct;
 		}
-		button.addEventListener('click', answerSelected); //event for clicking the answers need to link to a function****
+		button.addEventListener('click', answerSelected);
 		answerEl.appendChild(button);
 	});
 }
@@ -58,10 +63,47 @@ function resetAnswers() {
 	}
 }
 
-function answerSelected() {
-	//LEFT HERE*********************
+//Event after clicking one of the answers
+function answerSelected(e) {
+	var selectedButton = e.target;
+	var correct = selectedButton.dataset.correct;
+	if (!correct) {
+		timerCount -= 15;
+		if (timerCount < 0) {
+			timerCount = 0;
+		}
+		timerEl.textContent = timerCount;
+		resultEl.textContent = 'Wrong!';
+		resultEl.style.fontSize = '4em';
+	} else {
+		resultEl.textContent = 'Correct!';
+		resultEl.style.fontSize = '4em';
+	}
+
+	resultEl.setAttribute('class', 'result');
+	setTimeout(function () {
+		resultEl.setAttribute('class', 'result hide');
+	}, 1000);
+	//goes to next Question
+	currentQuestionIndex++;
+	//checks if there is more questions or ends quiz***Not working
+
+	if (currentQuestionIndex === questions.length) {
+		endQuiz();
+	} else {
+		nextQuestion();
+	}
 }
 
+//End Game
+function endQuiz() {
+	clearInterval(timer);
+	questionContainerEl.setAttribute('class', 'hide');
+	theEndEl.removeAttribute('class');
+	finalScoreEl.textContent = timerCount;
+}
+
+// Questions
 var questions = [
 	{
 		question: 'What is a variable?',
