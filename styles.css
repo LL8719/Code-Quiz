@@ -17,6 +17,10 @@
     margin-top: 0.5em;
 }
 
+.high-scores a {
+    text-decoration: none;
+}
+
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -32,10 +36,12 @@
     justify-content: center;
     align-items: center;
     font-size: 4em;
+    margin-top: 2em;
 }
 
 .start p {
     font-size: 2em;
+    padding: 3em;
 }
 
 .start-button {
@@ -57,7 +63,13 @@
 #question{
     padding: 1em;
     font-size: 3em;
+    margin-top: 2em;
 }
+
+button.btn {
+    font-size: 20px;
+}
+
 
 .btns {
     display: grid;
@@ -65,6 +77,47 @@
 
 }
 
+.result {
+    margin-top: 1em;
+}
+
 .hide {
     display: none;
 }
+
+.end {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+}
+
+button#submit {
+    margin-left: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+p {
+    font-size: 1.5em;
+}
+
+h2 {
+    font-size: 3em;
+}
+
+button#clear-scores, a {
+    font-size: 1.3em;
+    text-decoration: none;
+}
+
+.user-initials {
+    font-size: 2em;
+}
+
+div#gameOver  {
+    margin-left: 25em;
+}
+

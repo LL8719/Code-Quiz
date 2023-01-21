@@ -10,7 +10,7 @@
 <body>
     <header class="header" >
     <div class="high-scores">
-        <a><span>View High Scores</span></a>
+        <a href="./scores.html"><span class="score-title">View High Scores</span></a>
     </div>
 
     <div class="timer">
@@ -21,7 +21,10 @@
     <div class="container">
         <div class="start" id="begin">
         <h1>Coding Quiz</h1>
-        <p>Test your coding knowledge by answering the following questions as fast as you can and get a High Score.</p>
+        <p>Test your coding knowledge by answering the following questions as fast as you can and get a High Score.
+            If you get a wrong answer the timer will be reduced by 15 sec.
+            Good Luck!
+        </p>
         <button class="start-button" id="start">Start</button>
         </div>
     </div>
@@ -40,10 +43,10 @@
 
     
 
-    <div class="the-end hide" >
+    <div class="the-end hide" id="gameOver">
         <h2>Game Over!</h2>
         <p>Your final score is <span id="final-score">0</span></p>
-        <span>Enter Initials <input type="text" id="initials"></span>
+        <span class="user-initials">Enter Initials <input type="text" id="initials"></span>
         <button id="submit">Submit</button>
     </div>
     

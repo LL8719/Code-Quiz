@@ -7,14 +7,18 @@ var answerEl = document.querySelector('.btns');
 var resultEl = document.querySelector('#result');
 var theEndEl = document.querySelector('.the-end');
 var finalScoreEl = document.querySelector('#final-score');
+var submitEl = document.querySelector('#submit');
+var initialsEl = document.querySelector('#initials');
 
 var switchQuestions, currentQuestionIndex;
 
 var timer;
 var timerCount;
+var userScores = JSON.parse(localStorage.getItem('highScores')) || [];
 
 //Event listener to start game
 startButtonEl.addEventListener('click', startGame);
+submitEl.addEventListener('click', viewHighScores);
 
 //Starts Game
 function startGame() {
@@ -34,6 +38,7 @@ function startTimer() {
 		timerEl.textContent = timerCount;
 		if (timerCount === 0) {
 			clearInterval(timer);
+			endQuiz();
 		}
 	}, 1000);
 }
@@ -103,6 +108,18 @@ function endQuiz() {
 	finalScoreEl.textContent = timerCount;
 }
 
+function viewHighScores() {
+	var data = {
+		score: timerCount,
+		initials: initialsEl.value,
+	};
+
+	userScores.push(data);
+	localStorage.setItem('highScores', JSON.stringify(userScores));
+
+	window.location.href = './scores.html';
+}
+
 // Questions
 var questions = [
 	{
@@ -153,6 +170,40 @@ var questions = [
 			{
 				text: 'is the index of an array',
 				correct: false,
+			},
+		],
+	},
+	{
+		question: 'What does HTML stands for?',
+		answers: [
+			{
+				text: 'hyper tone markup language',
+				correct: false,
+			},
+			{
+				text: 'hyper text markup language',
+				correct: true,
+			},
+			{
+				text: 'Hot Topic Multiple Language',
+				correct: false,
+			},
+		],
+	},
+	{
+		question: 'What is the function of CSS?',
+		answers: [
+			{
+				text: 'It links the files',
+				correct: false,
+			},
+			{
+				text: 'It animates the webpage',
+				correct: false,
+			},
+			{
+				text: 'It adds styling to the webpage',
+				correct: true,
 			},
 		],
 	},
