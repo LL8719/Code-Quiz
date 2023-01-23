@@ -160,7 +160,7 @@ var questions = [
 		question: 'What is a string?',
 		answers: [
 			{
-				text: 'stores a series of characters like "John Doe"',
+				text: 'object used to represent and manipulate a sequence of characters',
 				correct: true,
 			},
 			{
