@@ -2,7 +2,7 @@
 
 ## Description
 
-Code quiz will test your Coding Knowledge with a timed quiz that will deduct time from the timer if you get an answer wrong.
+Code quiz is a monochromatic Web page that will test your Coding Knowledge with a timed quiz that will deduct time from the timer if you get an answer wrong.
 Try to get a High score and see if you are among the best players by saving your score inputting your initials at the end of the game.
 Once you run out of time is Game Over!
 
@@ -26,7 +26,7 @@ N/A
 ## link
 
 The following image shows the web application's appearance:
-![My Portfolio](https://ll8719.github.io/Code-Quiz)
+![My Portfolio](https://ll8719.github.io/Code-Quiz/)
 
 ## Screenshot
 

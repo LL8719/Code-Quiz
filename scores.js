@@ -1,3 +1,4 @@
+// Highscores section
 var userScores = JSON.parse(localStorage.getItem('highScores')) || [];
 var ulEl = document.querySelector('#saved-scores');
 var clearEl = document.querySelector('#clear-scores');

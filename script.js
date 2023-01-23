@@ -42,7 +42,7 @@ function startTimer() {
 		}
 	}, 1000);
 }
-//Renders the next question
+//Goes to the next question
 function nextQuestion() {
 	resetAnswers();
 	revealQuestion(switchQuestions[currentQuestionIndex]);
@@ -61,14 +61,14 @@ function revealQuestion(question) {
 		answerEl.appendChild(button);
 	});
 }
-
+// Reset Questions
 function resetAnswers() {
 	while (answerEl.firstChild) {
 		answerEl.removeChild(answerEl.firstChild);
 	}
 }
 
-//Event after clicking one of the answers
+//Event after clicking one of the answers /Detracts time when answer is wrong
 function answerSelected(e) {
 	var selectedButton = e.target;
 	var correct = selectedButton.dataset.correct;
@@ -91,7 +91,7 @@ function answerSelected(e) {
 	}, 1000);
 	//goes to next Question
 	currentQuestionIndex++;
-	//checks if there is more questions or ends quiz***Not working
+	//checks if there is more questions or ends quiz
 
 	if (currentQuestionIndex === questions.length) {
 		endQuiz();
@@ -107,7 +107,7 @@ function endQuiz() {
 	theEndEl.removeAttribute('class');
 	finalScoreEl.textContent = timerCount;
 }
-
+//High scores section and storage
 function viewHighScores() {
 	var data = {
 		score: timerCount,
@@ -115,6 +115,7 @@ function viewHighScores() {
 	};
 
 	userScores.push(data);
+	//Stores HighScores
 	localStorage.setItem('highScores', JSON.stringify(userScores));
 
 	window.location.href = './scores.html';
